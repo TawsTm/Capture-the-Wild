@@ -1,0 +1,34 @@
+{
+    "name": "CineMachineSwitcher",
+    "maps": [
+        {
+            "name": "Standard",
+            "id": "04178f59-ff27-4fab-8089-4fe694146543",
+            "actions": [
+                {
+                    "name": "Switch",
+                    "type": "Button",
+                    "id": "1ff567a8-4341-473b-8cc1-54e445d3a708",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dd738a51-f6de-4a36-82cf-75493737fcb6",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
