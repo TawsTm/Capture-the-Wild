@@ -4,5 +4,12 @@ using UnityEngine;
 
 public class Animal : MonoBehaviour
 {
-    public string name;
+    public enum animalOptions { Giraffe, Elefant };
+    public animalOptions chooseAnimal;
+    public string Name { get; set; }
+    public int Id { get; set; }
+
+    void Start() {
+        AnimalCounter.AddAnimal(this);
+    }
 }

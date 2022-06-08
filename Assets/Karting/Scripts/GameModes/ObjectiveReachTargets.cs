@@ -9,6 +9,9 @@ public class ObjectiveReachTargets : Objective
     
     [Tooltip("If MustCollectAllPickups is false, this is the amount of pickups required")]
     public int pickupsToCompleteObjective = 5;
+
+    // The animals to be found
+    private string[] animalNames = {"Elefant", "Giraffe"};
     
     [Header("Notification")]
     [Tooltip("Start sending notification about remaining pickups when this amount of pickups is left")]
