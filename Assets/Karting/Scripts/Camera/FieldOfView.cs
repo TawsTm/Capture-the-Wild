@@ -8,6 +8,8 @@ public class FieldOfView : MonoBehaviour
     public CamSwitch CamStatus;
     private bool newCamStatus;
 
+    private bool statusCam = true;
+
     [Range(0.1f, 20.0f), Tooltip("Used to control the speed of the camera when filming")]
         public float CameraSpeed = 0.3f;
 
@@ -25,13 +27,10 @@ public class FieldOfView : MonoBehaviour
     public List<Transform> visibleTargets = new List<Transform>();
 
     void Start() {
-        newCamStatus = CamStatus.topViewCamera;
-        // Sets how often the Vieww is checked for Targets
-        StartCoroutine("FindTargetsWithDelay", 3f);
     }
 
     IEnumerator FindTargetsWithDelay(float delay) {
-        while (!CamStatus.topViewCamera) {
+        while (!statusCam) {
             yield return new WaitForSeconds(delay);
             FindVisibleTargets();
         }
@@ -50,7 +49,9 @@ public class FieldOfView : MonoBehaviour
                 if(!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask)) {
                     // What should happen if a Target is in view
                     visibleTargets.Add(target);
-                    Debug.Log(targetsInViewRadius[i].name);
+                    Animal animal = targetsInViewRadius[i].GetComponent<Animal>();
+                    //AnimalCounter.RemoveAnimal(targetsInViewRadius[i].gameObject.chooseAnimal);
+                    AnimalCounter.RemoveAnimal(animal);
                 }
             }
         }
@@ -65,17 +66,18 @@ public class FieldOfView : MonoBehaviour
 
     void Update()
     {
-        if(!CamStatus.topViewCamera) {
+        if(!statusCam) {
             turnInput = Input.GetAxis("Horizontal");
             transform.Rotate(0, turnInput*CameraSpeed, 0, Space.Self);
-            if(!CamStatus.topViewCamera && newCamStatus != CamStatus.topViewCamera) {
-                StartCoroutine("FindTargetsWithDelay", 3f);
-                newCamStatus = CamStatus.topViewCamera;
-            }
-        } else {
-            if(newCamStatus != CamStatus.topViewCamera) {
-                newCamStatus = CamStatus.topViewCamera;
-            }
         }
+    }
+
+    public void startSearch() {
+        StartCoroutine("FindTargetsWithDelay", .2f);
+    }
+
+    public void setCamStatus(bool _state) {
+        statusCam = _state;
+        Debug.Log("Ich habe geswitched");
     }
 }

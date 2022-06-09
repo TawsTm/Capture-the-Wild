@@ -6,10 +6,14 @@ public class Animal : MonoBehaviour
 {
     public enum animalOptions { Giraffe, Elefant };
     public animalOptions chooseAnimal;
-    public string Name { get; set; }
-    public int Id { get; set; }
+    public string Name {get; set;}
 
-    void Start() {
+    void Awake() {
+        Name = chooseAnimal.ToString();
         AnimalCounter.AddAnimal(this);
     }
+
+    /**public Animal(string _name) {
+        Name = _name;
+    }*/
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CamSwitch : MonoBehaviour
 {
 
+    public FieldOfView fov;
     public bool topViewCamera = true;
 
     private Animator animator;
@@ -24,12 +25,19 @@ public class CamSwitch : MonoBehaviour
 
     private void SwitchState()
     {
-        if(topViewCamera) {
+        topViewCamera = !topViewCamera;
+
+        if(!topViewCamera) {
             animator.Play("CarViewState");
+
+            // Tell the CarCamera to start searching
+            fov.setCamStatus(topViewCamera);
+            fov.startSearch();
         }
         else {
             animator.Play("TopViewState");
+
+            fov.setCamStatus(topViewCamera);
         }
-        topViewCamera = !topViewCamera;
     }
 }
