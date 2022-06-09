@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    // Time to check for Animal
+    private float timeForAnimalCheck = .2f;
+
     /** Camera Movement **/
     public CamSwitch CamStatus;
     private bool newCamStatus;
@@ -24,7 +27,8 @@ public class FieldOfView : MonoBehaviour
     public LayerMask targetMask;
     public LayerMask obstacleMask;
 
-    public List<Transform> visibleTargets = new List<Transform>();
+    public List<Animal> visibleTargets = new List<Animal>();
+    private List<Animal> visibleTargetsCopy = new List<Animal>();
 
     void Start() {
     }
@@ -38,6 +42,11 @@ public class FieldOfView : MonoBehaviour
 
     void FindVisibleTargets() {
         visibleTargets.Clear();
+        visibleTargetsCopy.ForEach((item) =>
+        {
+            visibleTargets.Add(item);
+        });
+        visibleTargetsCopy.Clear();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
         for(int i = 0; i < targetsInViewRadius.Length; i++) {
@@ -47,11 +56,29 @@ public class FieldOfView : MonoBehaviour
                 float dstToTarget = Vector3.Distance (transform.position, target.position);
 
                 if(!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask)) {
-                    // What should happen if a Target is in view
-                    visibleTargets.Add(target);
                     Animal animal = targetsInViewRadius[i].GetComponent<Animal>();
-                    //AnimalCounter.RemoveAnimal(targetsInViewRadius[i].gameObject.chooseAnimal);
-                    AnimalCounter.RemoveAnimal(animal);
+                    // What should happen if a Target is in view
+                    bool found = false;
+                    for(int j = 0; j < visibleTargets.Count; j++) {
+                        if(visibleTargets[j] == animal){
+                            found = true;
+                            animal.ScreenTime += timeForAnimalCheck;
+                            //Debug.Log(animal.ScreenTime);
+                            if(animal.ScreenTime > 5) {
+                                AnimalCounter.RemoveAnimal(animal);
+                                Debug.Log("Removed: " + animal.Name);
+                            } else {
+                                Debug.Log(animal.Name + ". " + animal.ScreenTime);
+                                visibleTargetsCopy.Add(animal);
+                            }
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        visibleTargetsCopy.Add(animal);
+                        animal.ScreenTime = 0;
+                        //Debug.Log("First seen: " + animal.Name);
+                    }
                 }
             }
         }
@@ -73,7 +100,7 @@ public class FieldOfView : MonoBehaviour
     }
 
     public void startSearch() {
-        StartCoroutine("FindTargetsWithDelay", .2f);
+        StartCoroutine("FindTargetsWithDelay", timeForAnimalCheck);
     }
 
     public void setCamStatus(bool _state) {

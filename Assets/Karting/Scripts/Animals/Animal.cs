@@ -7,6 +7,7 @@ public class Animal : MonoBehaviour
     public enum animalOptions { Giraffe, Elefant };
     public animalOptions chooseAnimal;
     public string Name {get; set;}
+    public float ScreenTime {get; set;}
 
     void Awake() {
         Name = chooseAnimal.ToString();
