@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc38003c0e0db6641a4762d4f392de52, type: 3}
+  m_Name: PrefabPalette-Default
+  m_EditorClassIdentifier: 
+  prefabs:
+  - gameObject: {fileID: 2530378335419556344, guid: a47a8478f829a4369a31f2e69cadc5a9,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -180, z: 0}
+      m_RotationRangeMax: {x: 0, y: 180, z: 0}
+      m_ScaleRangeMin: {x: 0.6, y: 0.6, z: 0.6}
+      m_ScaleRangeMax: {x: 1.4, y: 1.4, z: 1.4}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: "Grasbu\u0308schel "
+  - gameObject: {fileID: 2530378335419556344, guid: a47a8478f829a4369a31f2e69cadc5a9,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -180, z: 0}
+      m_RotationRangeMax: {x: 0, y: 180, z: 0}
+      m_ScaleRangeMin: {x: 0.6, y: 0.6, z: 0.6}
+      m_ScaleRangeMax: {x: 1.4, y: 1.4, z: 1.4}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: "Grasbu\u0308schel "
+  - gameObject: {fileID: 4540288306310851985, guid: 2d504f926a0114ab58211dce23909c74,
+      type: 3}
+    settings:
+      m_Strength: 54.20538
+      m_RotationRangeMin: {x: 0, y: -180, z: 0}
+      m_RotationRangeMax: {x: 0, y: 180, z: 0}
+      m_ScaleRangeMin: {x: 0.7, y: 0.7, z: 0.7}
+      m_ScaleRangeMax: {x: 1.4, y: 1.4, z: 1.4}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Baum1
+  - gameObject: {fileID: 593042271596026950, guid: be1868da11eff450c85c45370fec292f,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -180, z: 0}
+      m_RotationRangeMax: {x: 0, y: 180, z: 0}
+      m_ScaleRangeMin: {x: 0.7, y: 0.7, z: 0.7}
+      m_ScaleRangeMax: {x: 1.4, y: 1.4, z: 1.4}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Baum3
+  - gameObject: {fileID: 4540288306310851985, guid: 2d504f926a0114ab58211dce23909c74,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -180, z: 0}
+      m_RotationRangeMax: {x: 0, y: 1.8, z: 0}
+      m_ScaleRangeMin: {x: 0.7, y: 0.7, z: 0.7}
+      m_ScaleRangeMax: {x: 1.4, y: 1.4, z: 1.4}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Baum1
+  - gameObject: {fileID: 2686880683467710564, guid: c34dd629b2d444a4fac272b7a9a24ea0,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -180, z: 0}
+      m_RotationRangeMax: {x: 0, y: 180, z: 0}
+      m_ScaleRangeMin: {x: 0.7, y: 0.7, z: 0.7}
+      m_ScaleRangeMax: {x: 1.4, y: 1.4, z: 1.4}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Baum2
+  - gameObject: {fileID: 5087231272547567665, guid: 83c186d4cf35745ce9bef457b847cb3a,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -40, z: 0}
+      m_RotationRangeMax: {x: 0, y: 40, z: 0}
+      m_ScaleRangeMin: {x: 0.9, y: 0.9, z: 0.9}
+      m_ScaleRangeMax: {x: 1.1, y: 1.1, z: 1.1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Elefant1
+  - gameObject: {fileID: 6662377700156234943, guid: c5f040be8bf154e528b6c3b7a57d96c7,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -40, z: 0}
+      m_RotationRangeMax: {x: 0, y: 40, z: 0}
+      m_ScaleRangeMin: {x: 0.9, y: 0.9, z: 0.9}
+      m_ScaleRangeMax: {x: 1.1, y: 1.1, z: 1.1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Elefant2
+  - gameObject: {fileID: 9041455656647791899, guid: 497706fda09794d1bba1c5d9634369e0,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -40, z: 0}
+      m_RotationRangeMax: {x: 0, y: 40, z: 0}
+      m_ScaleRangeMin: {x: 0.9, y: 0.9, z: 0.9}
+      m_ScaleRangeMax: {x: 1.1, y: 1.1, z: 1.1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Elefant3
+  - gameObject: {fileID: 4326435895753177755, guid: 5398827086abe4911b40258cb7c24485,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -40, z: 0}
+      m_RotationRangeMax: {x: 0, y: 40, z: 0}
+      m_ScaleRangeMin: {x: 0.9, y: 0.9, z: 0.9}
+      m_ScaleRangeMax: {x: 1.1, y: 1.1, z: 1.1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Elefant4
+  - gameObject: {fileID: 7112710697184685589, guid: fefcecada78ed4fc5909cc738a8bb3ae,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -180, z: 0}
+      m_RotationRangeMax: {x: 0, y: 180, z: 0}
+      m_ScaleRangeMin: {x: 0.7, y: 0.7, z: 0.7}
+      m_ScaleRangeMax: {x: 1.3, y: 1.3, z: 1.3}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Stein2
+  - gameObject: {fileID: 281498308565655530, guid: 15f39ce7ddf5f4a0bbb023516fbb5ddb,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -180, z: 0}
+      m_RotationRangeMax: {x: 0, y: 180, z: 0}
+      m_ScaleRangeMin: {x: 0.7, y: 0.7, z: 0.7}
+      m_ScaleRangeMax: {x: 1.3, y: 1.3, z: 1.3}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Stein3
+  - gameObject: {fileID: 6920130727364053033, guid: 8b600ff5643ae45daa37ede00e29fa48,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: -180, z: 0}
+      m_RotationRangeMax: {x: 0, y: 180, z: 0}
+      m_ScaleRangeMin: {x: 0.7, y: 0.7, z: 0.7}
+      m_ScaleRangeMax: {x: 1.3, y: 1.3, z: 1.3}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Stein1
