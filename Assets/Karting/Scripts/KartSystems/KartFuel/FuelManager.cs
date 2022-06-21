@@ -7,9 +7,9 @@ public class FuelManager : MonoBehaviour
 {
 
     private float fuel = 100f;
-    private float currentFuel;
+    private static float currentFuel;
 
-    private float fuelBurnrate = 20f;
+    private float fuelBurnrate = 40f;
     private static bool looseFuel = false;
 
     public Slider fuelSlider;

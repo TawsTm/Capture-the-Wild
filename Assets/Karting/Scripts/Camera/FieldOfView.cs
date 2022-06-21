@@ -30,7 +30,13 @@ public class FieldOfView : MonoBehaviour
     public List<Animal> visibleTargets = new List<Animal>();
     private List<Animal> visibleTargetsCopy = new List<Animal>();
 
+    VideoManager m_VideoManager;
+
     void Start() {
+
+        m_VideoManager = FindObjectOfType<VideoManager>();
+		DebugUtility.HandleErrorIfNullFindObject<VideoManager, FieldOfView>(m_VideoManager, this);
+
     }
 
     IEnumerator FindTargetsWithDelay(float delay) {
@@ -65,6 +71,7 @@ public class FieldOfView : MonoBehaviour
                             animal.ScreenTime += timeForAnimalCheck;
                             if(animal.ScreenTime > 5) {
                                 AnimalManager.RemoveAnimal(animal);
+                                m_VideoManager.PlayVideo(animal.Name);
                             } else {
                                 //Debug.Log(animal.Name + ". " + animal.ScreenTime);
                                 visibleTargetsCopy.Add(animal);

@@ -10,8 +10,15 @@ public class AnimalManager : MonoBehaviour
     private static int animalsToCollect = 2;
     private static int animalsCollected = 0;
 
+    public void OnEnable()
+    {
+        // This is needed to clear all missing Animals (If collected animals should be stored, the animals should not be cleared)
+        animalsCollected = 0;
+        animals.Clear();
+    }
+
     public static void RemoveAnimal(Animal _animal) {
-        Debug.Log("Removed " + _animal.Name);
+        // Debug.Log("Removed " + _animal.Name);
         animals.Remove(_animal);
         animalsCollected += 1;
         for(int i = 0; i < animals.Count; i++) {

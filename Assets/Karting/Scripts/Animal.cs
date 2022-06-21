@@ -9,6 +9,8 @@ public class Animal : MonoBehaviour
     public string Name {get; set;}
     public float ScreenTime {get; set;}
 
+    public static List<Animal> animals = new List<Animal>();
+
     void Awake() {
         Name = chooseAnimal.ToString();
         AnimalManager.AddAnimal(this);

@@ -45,6 +45,7 @@ public class GameFlowManager : MonoBehaviour
     //ObjectiveManager m_ObjectiveManager;
     AnimalManager m_AnimalManager;
     FuelManager m_FuelManager;
+    VideoManager m_VideoManager;
     TimeManager m_TimeManager;
     float m_TimeLoadEndGameScene;
     string m_SceneToLoad;
@@ -70,6 +71,9 @@ public class GameFlowManager : MonoBehaviour
 
         m_FuelManager = FindObjectOfType<FuelManager>();
 		DebugUtility.HandleErrorIfNullFindObject<FuelManager, GameFlowManager>(m_FuelManager, this);
+
+        m_VideoManager = FindObjectOfType<VideoManager>();
+		DebugUtility.HandleErrorIfNullFindObject<VideoManager, GameFlowManager>(m_VideoManager, this);
 
         m_TimeManager = FindObjectOfType<TimeManager>();
         DebugUtility.HandleErrorIfNullFindObject<TimeManager, GameFlowManager>(m_TimeManager, this);
@@ -160,8 +164,10 @@ public class GameFlowManager : MonoBehaviour
         }
         else
         {
-            if (m_AnimalManager.AreAllObjectivesCompleted())
+            if (m_AnimalManager.AreAllObjectivesCompleted()) {
+                Debug.Log("Ich teste");
                 EndGame(true);
+            }
 
             /*if (m_ObjectiveManager.AreAllObjectivesCompleted())
                 EndGame(true);*/
@@ -203,6 +209,7 @@ public class GameFlowManager : MonoBehaviour
         }
         else
         {
+            karts[0].SetCanMove(false);
             m_SceneToLoad = loseSceneName;
             m_TimeLoadEndGameScene = Time.time + endSceneLoadDelay + delayBeforeFadeToBlack;
 
