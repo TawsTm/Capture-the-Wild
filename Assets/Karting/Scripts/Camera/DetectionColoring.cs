@@ -14,7 +14,7 @@ public class DetectionColoring : MonoBehaviour
 
     public void SetActive(bool _on) {
         if(_on) {
-            Debug.Log("Ich sollte färben");
+            //Debug.Log("Ich sollte färben");
             text.color = new Color(0.5f,0,0,1);
         } else {
             text.color = new Color(1,1,1,1);

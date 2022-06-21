@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,14 +10,24 @@ public class FuelManager : MonoBehaviour
     private float fuel = 100f;
     private static float currentFuel;
 
-    private float fuelBurnrate = 40f;
+    private float fuelBurnrate = 2f;
     private static bool looseFuel = false;
 
     public Slider fuelSlider;
 
+    List<FuelTank> m_FuelTanks = new List<FuelTank>();
+
+    public List<FuelTank> FuelTanks => m_FuelTanks;
+
+    public static Action<FuelTank> RegisterFuelTank;
+
     private void Awake() {
         // This needs to be changed if the car should start with less then 100% fuel.
         currentFuel = 100f;
+    }
+
+    public void OnEnable() {
+        RegisterFuelTank += OnRegisterFuelTank;
     }
 
     // Start is called before the first frame update
@@ -50,5 +61,10 @@ public class FuelManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void OnRegisterFuelTank(FuelTank fuelTank)
+    {
+        m_FuelTanks.Add(fuelTank);
     }
 }
