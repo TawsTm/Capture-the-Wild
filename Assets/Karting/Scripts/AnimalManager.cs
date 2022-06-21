@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalCounter : MonoBehaviour
+public class AnimalManager : MonoBehaviour
 {
     public static List<Animal> animals = new List<Animal>();
 
@@ -14,16 +14,25 @@ public class AnimalCounter : MonoBehaviour
         Debug.Log("Removed " + _animal.Name);
         animals.Remove(_animal);
         animalsCollected += 1;
-        if(animalsCollected == animalsToCollect) {
-            /************* Hier kann bestimmt werden ab wann man gewonnen hat ********************/
-            Debug.Log("Du hast gewonnen");
-        }
         for(int i = 0; i < animals.Count; i++) {
             if(animals[i].Name == _animal.Name) {
                 animals.Remove(animals[i]);
                 Debug.Log("Removed another one");
             }
         }
+    }
+
+    public bool AreAllObjectivesCompleted()
+    {
+        if (animals.Count == 0) {
+            Debug.Log("No animals left to find");
+            return true;
+        } else if (animalsCollected < animalsToCollect) {
+            return false;
+        }
+
+        // found no uncompleted objective
+        return true;
     }
 
     public static void AddAnimal(Animal _animal) {

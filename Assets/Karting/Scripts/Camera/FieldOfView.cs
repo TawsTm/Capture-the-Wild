@@ -60,11 +60,11 @@ public class FieldOfView : MonoBehaviour
                     // What should happen if a Target is in view
                     bool found = false;
                     for(int j = 0; j < visibleTargets.Count; j++) {
-                        if(visibleTargets[j] == animal && AnimalCounter.hasMember(animal)){
+                        if(visibleTargets[j] == animal && AnimalManager.hasMember(animal)){
                             found = true;
                             animal.ScreenTime += timeForAnimalCheck;
                             if(animal.ScreenTime > 5) {
-                                AnimalCounter.RemoveAnimal(animal);
+                                AnimalManager.RemoveAnimal(animal);
                             } else {
                                 //Debug.Log(animal.Name + ". " + animal.ScreenTime);
                                 visibleTargetsCopy.Add(animal);
