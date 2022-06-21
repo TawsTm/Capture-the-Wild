@@ -31,8 +31,12 @@ public class FieldOfView : MonoBehaviour
     private List<Animal> visibleTargetsCopy = new List<Animal>();
 
     VideoManager m_VideoManager;
+    DetectionColoring m_DetectionColoring;
 
     void Start() {
+
+        m_DetectionColoring = FindObjectOfType<DetectionColoring>();
+		DebugUtility.HandleErrorIfNullFindObject<DetectionColoring, FieldOfView>(m_DetectionColoring, this);
 
         m_VideoManager = FindObjectOfType<VideoManager>();
 		DebugUtility.HandleErrorIfNullFindObject<VideoManager, FieldOfView>(m_VideoManager, this);
@@ -68,6 +72,7 @@ public class FieldOfView : MonoBehaviour
                     for(int j = 0; j < visibleTargets.Count; j++) {
                         if(visibleTargets[j] == animal && AnimalManager.hasMember(animal)){
                             found = true;
+
                             animal.ScreenTime += timeForAnimalCheck;
                             if(animal.ScreenTime > 5) {
                                 AnimalManager.RemoveAnimal(animal);
@@ -79,13 +84,19 @@ public class FieldOfView : MonoBehaviour
                             break;
                         }
                     }
-                    if (!found) {
+                    if (!found && AnimalManager.hasMember(animal)) {
                         visibleTargetsCopy.Add(animal);
                         animal.ScreenTime = 0;
                         //Debug.Log("First seen: " + animal.Name);
                     }
                 }
             }
+        }
+        // Color the CarCamera Canvas for vidual Feedback if there are possible Animals in Range
+        if(visibleTargetsCopy.Count != 0) {
+            m_DetectionColoring.SetActive(true);
+        } else {
+            m_DetectionColoring.SetActive(false);
         }
     }
 
@@ -110,6 +121,6 @@ public class FieldOfView : MonoBehaviour
 
     public void setCamStatus(bool _state) {
         statusCam = _state;
-        Debug.Log("Ich habe geswitched");
+        //Debug.Log("Ich habe geswitched");
     }
 }

@@ -20,7 +20,7 @@ TagManager:
   - CrashObject
   - Kart
   - TrainingCheckpoints
-  - 
+  - CarCameraUI
   - 
   - 
   - 
@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UI Elements
+    uniqueID: 1056384927
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
