@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    // Time to check for Animal
+    private float timeForAnimalCheck = .2f;
+
     /** Camera Movement **/
     public CamSwitch CamStatus;
     private bool newCamStatus;
+
+    private bool statusCam = true;
 
     [Range(0.1f, 20.0f), Tooltip("Used to control the speed of the camera when filming")]
         public float CameraSpeed = 0.3f;
@@ -22,16 +27,24 @@ public class FieldOfView : MonoBehaviour
     public LayerMask targetMask;
     public LayerMask obstacleMask;
 
-    public List<Transform> visibleTargets = new List<Transform>();
+    public List<Animal> visibleTargets = new List<Animal>();
+    private List<Animal> visibleTargetsCopy = new List<Animal>();
+
+    VideoManager m_VideoManager;
+    DetectionColoring m_DetectionColoring;
 
     void Start() {
-        newCamStatus = CamStatus.topViewCamera;
-        // Sets how often the Vieww is checked for Targets
-        StartCoroutine("FindTargetsWithDelay", 3f);
+
+        m_DetectionColoring = FindObjectOfType<DetectionColoring>();
+		DebugUtility.HandleErrorIfNullFindObject<DetectionColoring, FieldOfView>(m_DetectionColoring, this);
+
+        m_VideoManager = FindObjectOfType<VideoManager>();
+		DebugUtility.HandleErrorIfNullFindObject<VideoManager, FieldOfView>(m_VideoManager, this);
+
     }
 
     IEnumerator FindTargetsWithDelay(float delay) {
-        while (!CamStatus.topViewCamera) {
+        while (!statusCam) {
             yield return new WaitForSeconds(delay);
             FindVisibleTargets();
         }
@@ -39,6 +52,11 @@ public class FieldOfView : MonoBehaviour
 
     void FindVisibleTargets() {
         visibleTargets.Clear();
+        visibleTargetsCopy.ForEach((item) =>
+        {
+            visibleTargets.Add(item);
+        });
+        visibleTargetsCopy.Clear();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
         for(int i = 0; i < targetsInViewRadius.Length; i++) {
@@ -48,11 +66,37 @@ public class FieldOfView : MonoBehaviour
                 float dstToTarget = Vector3.Distance (transform.position, target.position);
 
                 if(!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask)) {
+                    Animal animal = targetsInViewRadius[i].GetComponent<Animal>();
                     // What should happen if a Target is in view
-                    visibleTargets.Add(target);
-                    Debug.Log(targetsInViewRadius[i].name);
+                    bool found = false;
+                    for(int j = 0; j < visibleTargets.Count; j++) {
+                        if(visibleTargets[j] == animal && AnimalManager.hasMember(animal)){
+                            found = true;
+
+                            animal.ScreenTime += timeForAnimalCheck;
+                            if(animal.ScreenTime > 5) {
+                                AnimalManager.RemoveAnimal(animal);
+                                m_VideoManager.PlayVideo(animal.Name);
+                            } else {
+                                //Debug.Log(animal.Name + ". " + animal.ScreenTime);
+                                visibleTargetsCopy.Add(animal);
+                            }
+                            break;
+                        }
+                    }
+                    if (!found && AnimalManager.hasMember(animal)) {
+                        visibleTargetsCopy.Add(animal);
+                        animal.ScreenTime = 0;
+                        //Debug.Log("First seen: " + animal.Name);
+                    }
                 }
             }
+        }
+        // Color the CarCamera Canvas for vidual Feedback if there are possible Animals in Range
+        if(visibleTargetsCopy.Count != 0) {
+            m_DetectionColoring.SetActive(true);
+        } else {
+            m_DetectionColoring.SetActive(false);
         }
     }
 
@@ -65,17 +109,18 @@ public class FieldOfView : MonoBehaviour
 
     void Update()
     {
-        if(!CamStatus.topViewCamera) {
+        if(!statusCam) {
             turnInput = Input.GetAxis("Horizontal");
             transform.Rotate(0, turnInput*CameraSpeed, 0, Space.Self);
-            if(!CamStatus.topViewCamera && newCamStatus != CamStatus.topViewCamera) {
-                StartCoroutine("FindTargetsWithDelay", 3f);
-                newCamStatus = CamStatus.topViewCamera;
-            }
-        } else {
-            if(newCamStatus != CamStatus.topViewCamera) {
-                newCamStatus = CamStatus.topViewCamera;
-            }
         }
+    }
+
+    public void startSearch() {
+        StartCoroutine("FindTargetsWithDelay", timeForAnimalCheck);
+    }
+
+    public void setCamStatus(bool _state) {
+        statusCam = _state;
+        //Debug.Log("Ich habe geswitched");
     }
 }

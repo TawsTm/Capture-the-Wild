@@ -42,7 +42,10 @@ public class GameFlowManager : MonoBehaviour
     public ArcadeKart playerKart;
 
     ArcadeKart[] karts;
-    ObjectiveManager m_ObjectiveManager;
+    //ObjectiveManager m_ObjectiveManager;
+    AnimalManager m_AnimalManager;
+    FuelManager m_FuelManager;
+    VideoManager m_VideoManager;
     TimeManager m_TimeManager;
     float m_TimeLoadEndGameScene;
     string m_SceneToLoad;
@@ -60,8 +63,17 @@ public class GameFlowManager : MonoBehaviour
             DebugUtility.HandleErrorIfNullFindObject<ArcadeKart, GameFlowManager>(playerKart, this);
         }
 
-        m_ObjectiveManager = FindObjectOfType<ObjectiveManager>();
-		DebugUtility.HandleErrorIfNullFindObject<ObjectiveManager, GameFlowManager>(m_ObjectiveManager, this);
+        /*m_ObjectiveManager = FindObjectOfType<ObjectiveManager>();
+		DebugUtility.HandleErrorIfNullFindObject<ObjectiveManager, GameFlowManager>(m_ObjectiveManager, this);*/
+
+        m_AnimalManager = FindObjectOfType<AnimalManager>();
+		DebugUtility.HandleErrorIfNullFindObject<AnimalManager, GameFlowManager>(m_AnimalManager, this);
+
+        m_FuelManager = FindObjectOfType<FuelManager>();
+		DebugUtility.HandleErrorIfNullFindObject<FuelManager, GameFlowManager>(m_FuelManager, this);
+
+        m_VideoManager = FindObjectOfType<VideoManager>();
+		DebugUtility.HandleErrorIfNullFindObject<VideoManager, GameFlowManager>(m_VideoManager, this);
 
         m_TimeManager = FindObjectOfType<TimeManager>();
         DebugUtility.HandleErrorIfNullFindObject<TimeManager, GameFlowManager>(m_TimeManager, this);
@@ -79,7 +91,7 @@ public class GameFlowManager : MonoBehaviour
 
         //run race countdown animation
         ShowRaceCountdownAnimation();
-        StartCoroutine(ShowObjectivesRoutine());
+        //StartCoroutine(ShowObjectivesRoutine());
 
         StartCoroutine(CountdownThenStartRaceRoutine());
     }
@@ -102,7 +114,7 @@ public class GameFlowManager : MonoBehaviour
         raceCountdownTrigger.Play();
     }
 
-    IEnumerator ShowObjectivesRoutine() {
+    /*IEnumerator ShowObjectivesRoutine() {
         while (m_ObjectiveManager.Objectives.Count == 0)
             yield return null;
         yield return new WaitForSecondsRealtime(0.2f);
@@ -111,7 +123,19 @@ public class GameFlowManager : MonoBehaviour
            if (m_ObjectiveManager.Objectives[i].displayMessage)m_ObjectiveManager.Objectives[i].displayMessage.Display();
            yield return new WaitForSecondsRealtime(1f);
         }
-    }
+    }*/
+
+    /*IEnumerator ShowAnimalsRoutine() {
+        while (m_AnimalManager.animals.Count == 0)
+            yield return null;
+        yield return new WaitForSecondsRealtime(0.2f);
+        for (int i = 0; i < m_AnimalManager.animals.Count; i++)
+        {
+           if (m_AnimalManager.animals[i].displayMessage)m_AnimalManager.animals[i].displayMessage.Display();
+           yield return new WaitForSecondsRealtime(1f);
+        }
+    }*/
+
 
 
     void Update()
@@ -140,10 +164,18 @@ public class GameFlowManager : MonoBehaviour
         }
         else
         {
-            if (m_ObjectiveManager.AreAllObjectivesCompleted())
+            if (m_AnimalManager.AreAllObjectivesCompleted()) {
+                Debug.Log("Ich teste");
                 EndGame(true);
+            }
+
+            /*if (m_ObjectiveManager.AreAllObjectivesCompleted())
+                EndGame(true);*/
 
             if (m_TimeManager.IsFinite && m_TimeManager.IsOver)
+                EndGame(false);
+
+            if(m_FuelManager.IsFuelEmpty()) 
                 EndGame(false);
         }
     }
@@ -177,6 +209,7 @@ public class GameFlowManager : MonoBehaviour
         }
         else
         {
+            karts[0].SetCanMove(false);
             m_SceneToLoad = loseSceneName;
             m_TimeLoadEndGameScene = Time.time + endSceneLoadDelay + delayBeforeFadeToBlack;
 
