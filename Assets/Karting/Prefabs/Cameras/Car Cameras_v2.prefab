@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1bf3e747843b84f81971fc9edde104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 5632362114627258994}
   _carCamMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -431,7 +432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5632362114627258998}
   m_LocalRotation: {x: 0.38268337, y: 0.000000062301766, z: -0.00000002580623, w: 0.92387956}
-  m_LocalPosition: {x: 4.579998, y: 14.742134, z: -14.142138}
+  m_LocalPosition: {x: 4.580002, y: 14.742134, z: -14.142138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5632362114161796148}

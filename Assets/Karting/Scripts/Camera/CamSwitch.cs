@@ -6,7 +6,7 @@ using Cinemachine;
 public class CamSwitch : MonoBehaviour
 {
 
-    Camera m_MainCamera;
+    public Camera mainCamera;
     public LayerMask _carCamMask;
     public LayerMask _topViewMask;
 
@@ -16,8 +16,6 @@ public class CamSwitch : MonoBehaviour
     private Animator animator;
 
     void Start() {
-        m_MainCamera = FindObjectOfType<Camera>();
-		DebugUtility.HandleErrorIfNullFindObject<Camera, CamSwitch>(m_MainCamera, this);
     }
 
     private void Awake() 
@@ -45,7 +43,7 @@ public class CamSwitch : MonoBehaviour
             fov.startSearch();
 
             // Tell the Main Camera which Culling Mask to use
-            m_MainCamera.cullingMask = _carCamMask;
+            mainCamera.cullingMask = _carCamMask;
         }
         else {
             animator.Play("TopViewState");
@@ -53,7 +51,7 @@ public class CamSwitch : MonoBehaviour
             fov.setCamStatus(topViewCamera);
 
             // Tell the Main Camera which Culling Mask to use
-            m_MainCamera.cullingMask = _topViewMask;
+            mainCamera.cullingMask = _topViewMask;
         }
     }
 }
