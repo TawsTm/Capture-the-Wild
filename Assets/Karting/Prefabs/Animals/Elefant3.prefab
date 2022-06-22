@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8516980520180010913}
   - component: {fileID: 4728145455849881604}
   - component: {fileID: 7384012727848514766}
-  - component: {fileID: -636387268163970025}
+  - component: {fileID: -4379588985563638807}
+  - component: {fileID: -7463167265733794682}
   m_Layer: 0
   m_Name: Elefant3
   m_TagString: Untagged
@@ -82,8 +83,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-636387268163970025
-MeshCollider:
+--- !u!54 &-4379588985563638807
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041455656647791899}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &-7463167265733794682
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,7 +109,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1688554136016208280, guid: 0b7200b953d8b456b8c2a46c5e27f427, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.5046083, y: 1.8226037, z: 2.6082623}
+  m_Center: {x: 0.14178199, y: 0.8604603, z: -0.33639753}

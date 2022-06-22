@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1911706960390258667}
   - component: {fileID: 3253961572451414094}
   - component: {fileID: 778159042528543876}
+  - component: {fileID: -2738948819812376095}
   m_Layer: 0
   m_Name: Tankstelle
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-2738948819812376095
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282523098561881425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4658178624385161094, guid: 88cb9af3ae5254c88b3136d516238d18, type: 3}

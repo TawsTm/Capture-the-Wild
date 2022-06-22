@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7637748851434075311}
   - component: {fileID: 6796327148160236298}
   - component: {fileID: 8770075010283851712}
+  - component: {fileID: 8628638039519991444}
+  - component: {fileID: 2619847536778673547}
   m_Layer: 0
   m_Name: Stein2
   m_TagString: Untagged
@@ -81,3 +83,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8628638039519991444
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112710697184685589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8635461, y: 0.96529806, z: 1.7683272}
+  m_Center: {x: -0.05285257, y: 0.4715293, z: 0.008115768}
+--- !u!54 &2619847536778673547
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112710697184685589}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

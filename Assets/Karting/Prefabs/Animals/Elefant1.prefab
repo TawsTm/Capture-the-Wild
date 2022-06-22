@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8826337126532226350}
   - component: {fileID: 6744568786270775780}
   - component: {fileID: 733209520604261142}
-  - component: {fileID: -7593999351945799831}
+  - component: {fileID: 3532881245543397267}
+  - component: {fileID: 7977302704223566027}
   m_Layer: 0
   m_Name: Elefant1
   m_TagString: Untagged
@@ -7159,8 +7160,8 @@ MonoBehaviour:
   m_OriginalMeshObject: {fileID: 5776588597856771377, guid: 04f1e350494d040f68cbea83f484f2a7,
     type: 3}
   m_Mode: 0
---- !u!64 &-7593999351945799831
-MeshCollider:
+--- !u!65 &3532881245543397267
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7169,7 +7170,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5776588597856771377, guid: 04f1e350494d040f68cbea83f484f2a7, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.7652977, y: 4.1460757, z: 6.2971954}
+  m_Center: {x: 0.29782665, y: 1.9577506, z: -0.26697266}
+--- !u!54 &7977302704223566027
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087231272547567665}
+  serializedVersion: 2
+  m_Mass: 30
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
