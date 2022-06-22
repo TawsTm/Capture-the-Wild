@@ -1714,6 +1714,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1011129445}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &1493437561 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5632362114627258994, guid: e73d89fb071c2d94e9453229465998f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 5632362113663712596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1529660757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,6 +2451,21 @@ PrefabInstance:
       propertyPath: fov
       value: 
       objectReference: {fileID: 1018544803}
+    - target: {fileID: 5632362112989963376, guid: e73d89fb071c2d94e9453229465998f2,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1493437561}
+    - target: {fileID: 5632362112989963376, guid: e73d89fb071c2d94e9453229465998f2,
+        type: 3}
+      propertyPath: topViewCamera
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632362112989963376, guid: e73d89fb071c2d94e9453229465998f2,
+        type: 3}
+      propertyPath: _topViewMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
     - target: {fileID: 5632362112989963380, guid: e73d89fb071c2d94e9453229465998f2,
         type: 3}
       propertyPath: m_ChildCameras.Array.size
@@ -2509,6 +2530,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632362114627258994, guid: e73d89fb071c2d94e9453229465998f2,
+        type: 3}
+      propertyPath: m_Depth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632362114627258994, guid: e73d89fb071c2d94e9453229465998f2,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632362114627258998, guid: e73d89fb071c2d94e9453229465998f2,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e73d89fb071c2d94e9453229465998f2, type: 3}
@@ -2594,6 +2630,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6379883073303493734, guid: dedcaf9b220bd8a4bbeeb3be9d5db58f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6379883073303493739, guid: dedcaf9b220bd8a4bbeeb3be9d5db58f,
         type: 3}
       propertyPath: player
@@ -2608,6 +2649,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7537617806813164325, guid: 3749d5fb0149ae148b93259e38398806,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1493437561}
+    - target: {fileID: 7537617806813164325, guid: 3749d5fb0149ae148b93259e38398806,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1056384927
+      objectReference: {fileID: 0}
     - target: {fileID: 7537617807849906273, guid: 3749d5fb0149ae148b93259e38398806,
         type: 3}
       propertyPath: CamStatus
