@@ -320,8 +320,10 @@ namespace KartGame.KartSystems
             if (m_CanMove)
             {
                 MoveVehicle(Input.Accelerate, Input.Brake, Input.TurnInput);
+                FuelManager.ReduceFuel(Input.Accelerate || Input.Brake);
             } else {
                 MoveVehicle(false, false, Input.TurnInput);
+                FuelManager.ReduceFuel(false);
             }
             GroundAirbourne();
 
