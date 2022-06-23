@@ -43,6 +43,11 @@ public class GameFlowManager : MonoBehaviour
     public ArcadeKart playerKart;
     public Transform respawnPoint;
 
+    [Tooltip("The Camera that is collected if you loose your camera on respawn")]
+    public GameObject fallenCamera;
+    [Tooltip("Normally the Camera on top of the Car")]
+    public GameObject cameraToRemove;
+
     ArcadeKart[] karts;
     //ObjectiveManager m_ObjectiveManager;
     AnimalManager m_AnimalManager;
@@ -235,6 +240,14 @@ public class GameFlowManager : MonoBehaviour
         StartCoroutine(ExecuteAfterTime(3f, () =>
         {            
             Debug.Log("Aufgerufen");
+            // Loose the Camera here
+            if(cameraToRemove.activeSelf) {
+                fallenCamera.transform.position = playerKart.transform.position;
+                cameraToRemove.SetActive(false);
+                fallenCamera.SetActive(true);
+            }
+
+
             //Enable Car Movement after Respawn
             playerKart.SetCanMove(true);
             FuelManager.FillUpFuel(10f);
