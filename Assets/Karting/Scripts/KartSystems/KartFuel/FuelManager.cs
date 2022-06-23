@@ -10,7 +10,7 @@ public class FuelManager : MonoBehaviour
     private static float fuel = 100f;
     private static float currentFuel;
 
-    private float fuelBurnrate = 10f;
+    private float fuelBurnrate = 2f;
     private static bool looseFuel = false;
 
     public Image fuelIndicator;

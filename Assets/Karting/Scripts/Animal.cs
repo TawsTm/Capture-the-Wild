@@ -11,9 +11,16 @@ public class Animal : MonoBehaviour
 
     public static List<Animal> animals = new List<Animal>();
 
+    FeedbackFlashHUD m_FeedbackFlashHUD;
+
     void Awake() {
         Name = chooseAnimal.ToString();
         AnimalManager.AddAnimal(this);
+    }
+
+    void Start() {
+        m_FeedbackFlashHUD = FindObjectOfType<FeedbackFlashHUD>();
+		DebugUtility.HandleErrorIfNullFindObject<FeedbackFlashHUD, Animal>(m_FeedbackFlashHUD, this);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -21,6 +28,7 @@ public class Animal : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             AnimalManager.RemoveAnimal(this, false);
+            m_FeedbackFlashHUD.FlashWarning();
         }
     }
 }

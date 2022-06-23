@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class FeedbackFlashHUD : MonoBehaviour
@@ -25,6 +27,9 @@ public class FeedbackFlashHUD : MonoBehaviour
     AudioSource m_audioSource;
     bool warningSoundPlayed = false;
 
+    private bool isCoroutineExecuting = false;
+    private bool pulsate = false;
+
     
     void Start()
     {
@@ -38,6 +43,8 @@ public class FeedbackFlashHUD : MonoBehaviour
 
         m_audioSource = GetComponent<AudioSource>();
         DebugUtility.HandleErrorIfNullFindObject<AudioSource, FeedbackFlashHUD>(m_audioSource, this);
+
+        FlashWarning();
     }
 
     private void Update()
@@ -84,6 +91,56 @@ public class FeedbackFlashHUD : MonoBehaviour
         m_FlashActive = set;
         
         if (!set)  vignetteCanvasGroup.alpha = 0;
+    }
+
+    public void FlashWarning() {
+        EnableFlash(true);
+        pulsate = true;
+
+        StartCoroutine(Pulse(0.1f));
+
+        StartCoroutine(StopAfterTime(3f, () =>
+        {            
+            pulsate = false;
+            EnableFlash(false);
+        }));
+    }
+
+    IEnumerator StopAfterTime(float time, Action task)
+    {
+        if (isCoroutineExecuting)
+            yield break;
+        isCoroutineExecuting = true;
+        yield return new WaitForSeconds(time);
+        task();
+        isCoroutineExecuting = false;
+    }
+
+    IEnumerator Pulse(float delay) {
+        while (pulsate) {
+            yield return new WaitForSeconds(delay);
+
+            float vignetteAlpha = criticalTimeVignetteMaxAlpha;
+
+            if (m_GameFlowManager.gameState == GameState.Lost)
+                vignetteCanvasGroup.alpha = vignetteAlpha;
+            if (m_GameFlowManager.gameState == GameState.Won)
+                vignetteCanvasGroup.alpha = 0;
+            else
+            {
+                vignetteCanvasGroup.alpha = ((Mathf.Sin(Time.time * pulsatingVignetteFrequency) / 2) + 0.5f) * vignetteAlpha;
+
+                if(!warningSoundPlayed && vignetteCanvasGroup.alpha >= 0.5f){
+                    m_audioSource.PlayOneShot(warningAudioClip);
+                    warningSoundPlayed = true;
+                }
+
+                if(vignetteCanvasGroup.alpha < 0.5f){
+                    warningSoundPlayed = false;
+                }
+
+            }
+        }
     }
   
 }
