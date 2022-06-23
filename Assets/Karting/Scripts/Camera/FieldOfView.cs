@@ -11,6 +11,8 @@ public class FieldOfView : MonoBehaviour
     public CamSwitch CamStatus;
     private bool newCamStatus;
 
+    public float timeTillTargetFound = 3f;
+
     private bool statusCam = true;
 
     [Range(0.1f, 20.0f), Tooltip("Used to control the speed of the camera when filming")]
@@ -74,7 +76,7 @@ public class FieldOfView : MonoBehaviour
                             found = true;
 
                             animal.ScreenTime += timeForAnimalCheck;
-                            if(animal.ScreenTime > 5) {
+                            if(animal.ScreenTime > timeTillTargetFound) {
                                 AnimalManager.RemoveAnimal(animal);
                                 m_VideoManager.PlayVideo(animal.Name);
                             } else {
@@ -84,6 +86,7 @@ public class FieldOfView : MonoBehaviour
                             break;
                         }
                     }
+                    // The first frame where the animal is seen
                     if (!found && AnimalManager.hasMember(animal)) {
                         visibleTargetsCopy.Add(animal);
                         animal.ScreenTime = 0;
@@ -116,6 +119,9 @@ public class FieldOfView : MonoBehaviour
     }
 
     public void startSearch() {
+        // Targets are reset on every Search Start, so that you need to film x seconds in one go
+        visibleTargets.Clear();
+        visibleTargetsCopy.Clear();
         StartCoroutine("FindTargetsWithDelay", timeForAnimalCheck);
     }
 

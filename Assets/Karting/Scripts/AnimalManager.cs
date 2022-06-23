@@ -14,13 +14,17 @@ public class AnimalManager : MonoBehaviour
     {
         // This is needed to clear all missing Animals (If collected animals should be stored, the animals should not be cleared)
         animalsCollected = 0;
-        animals.Clear();
+        //animals.Clear();
+    }
+
+    void Start() {
     }
 
     public static void RemoveAnimal(Animal _animal) {
         // Debug.Log("Removed " + _animal.Name);
         animals.Remove(_animal);
         animalsCollected += 1;
+        AnimalBadgeManager.ActivateAnimalBadge(_animal.Name);
         for(int i = 0; i < animals.Count; i++) {
             if(animals[i].Name == _animal.Name) {
                 animals.Remove(animals[i]);

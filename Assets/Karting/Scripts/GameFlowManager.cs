@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -40,6 +41,7 @@ public class GameFlowManager : MonoBehaviour
 
     public bool autoFindKarts = true;
     public ArcadeKart playerKart;
+    public Transform respawnPoint;
 
     ArcadeKart[] karts;
     //ObjectiveManager m_ObjectiveManager;
@@ -50,6 +52,8 @@ public class GameFlowManager : MonoBehaviour
     float m_TimeLoadEndGameScene;
     string m_SceneToLoad;
     float elapsedTimeBeforeEndScene = 0;
+
+    private bool isCoroutineExecuting = false;
 
     void Start()
     {
@@ -81,7 +85,7 @@ public class GameFlowManager : MonoBehaviour
         AudioUtility.SetMasterVolume(1);
 
         winDisplayMessage.gameObject.SetActive(false);
-        loseDisplayMessage.gameObject.SetActive(false);
+        loseDisplayMessage.gameObject.SetActive(true);
 
         m_TimeManager.StopRace();
         foreach (ArcadeKart k in karts)
@@ -176,7 +180,7 @@ public class GameFlowManager : MonoBehaviour
                 EndGame(false);
 
             if(m_FuelManager.IsFuelEmpty()) 
-                EndGame(false);
+                Respawn();
         }
     }
 
@@ -209,13 +213,44 @@ public class GameFlowManager : MonoBehaviour
         }
         else
         {
-            karts[0].SetCanMove(false);
+            /*playerKart.SetCanMove(false);
+
             m_SceneToLoad = loseSceneName;
             m_TimeLoadEndGameScene = Time.time + endSceneLoadDelay + delayBeforeFadeToBlack;
 
             // create a game message
             loseDisplayMessage.delayBeforeShowing = delayBeforeWinMessage;
-            loseDisplayMessage.gameObject.SetActive(true);
+            loseDisplayMessage.gameObject.SetActive(true);*/
         }
+    }
+
+    void Respawn() {
+        // create a game message
+        loseDisplayMessage.delayBeforeShowing = delayBeforeWinMessage;
+        loseDisplayMessage.Display();
+
+        // Disable Movement
+        playerKart.SetCanMove(false);
+        //Set Back Car after 5sec
+        StartCoroutine(ExecuteAfterTime(3f, () =>
+        {            
+            Debug.Log("Aufgerufen");
+            //Enable Car Movement after Respawn
+            playerKart.SetCanMove(true);
+            FuelManager.FillUpFuel(10f);
+            playerKart.transform.position = respawnPoint.transform.position;
+            playerKart.transform.rotation = respawnPoint.transform.rotation;
+            loseDisplayMessage.SetWasDisplayed(false);
+        }));
+    }
+
+    IEnumerator ExecuteAfterTime(float time, Action task)
+    {
+        if (isCoroutineExecuting)
+            yield break;
+        isCoroutineExecuting = true;
+        yield return new WaitForSeconds(time);
+        task();
+        isCoroutineExecuting = false;
     }
 }

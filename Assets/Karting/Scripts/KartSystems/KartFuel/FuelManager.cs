@@ -13,7 +13,7 @@ public class FuelManager : MonoBehaviour
     private float fuelBurnrate = 10f;
     private static bool looseFuel = false;
 
-    public Slider fuelSlider;
+    public Image fuelIndicator;
 
     private void Awake() {
         // This needs to be changed if the car should start with less then 100% fuel.
@@ -32,7 +32,7 @@ public class FuelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fuelSlider.value = currentFuel / fuel;
+        fuelIndicator.fillAmount = currentFuel / fuel;
     }
 
     void FixedUpdate() {

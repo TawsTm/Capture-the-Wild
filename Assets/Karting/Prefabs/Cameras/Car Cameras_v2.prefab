@@ -366,7 +366,7 @@ MonoBehaviour:
   mainCamera: {fileID: 5632362114627258994}
   _carCamMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 65495
   _topViewMask:
     serializedVersion: 2
     m_Bits: 32759

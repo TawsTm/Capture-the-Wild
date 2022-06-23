@@ -45,17 +45,21 @@ public class DisplayMessage : MonoBehaviour
     
     public void Display()
     {
+        if (m_WasDisplayed) return;
+        m_WasDisplayed = true;
+
         notification = messagePrefab.getObject(true,m_DisplayMessageManager.DisplayMessageRect.transform).GetComponent<NotificationToast>();
         
         notification.Initialize(message);
         
         m_DisplayMessageManager.DisplayMessageRect.UpdateTable(notification.gameObject);
 
-        m_WasDisplayed = true;
-
         StartCoroutine(messagePrefab.ReturnWithDelay(notification.gameObject,notification.TotalRunTime));
 
     }
 
+    public void SetWasDisplayed(bool set) {
+        m_WasDisplayed = set;
+    }
    
 }
