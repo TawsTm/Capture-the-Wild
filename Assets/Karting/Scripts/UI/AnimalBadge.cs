@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AnimalBadge : MonoBehaviour
 {
-    public enum animalBadgeOptions { Giraffe, Elefant, Loewe, Antilope, Krokodil };
+    public enum animalBadgeOptions { Zebra, Elefant, Antilope, Buffalo, Gepard, Giraffe, Gnu, Hyaene, Krokodil, Loewe, Nashorn, Nilpferd, Strauss, Wildschwein };
     public animalBadgeOptions chooseAnimalBadge;
     public string Name {get; set;}
     private Image image;

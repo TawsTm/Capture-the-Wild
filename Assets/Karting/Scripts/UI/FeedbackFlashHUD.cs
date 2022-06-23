@@ -43,8 +43,7 @@ public class FeedbackFlashHUD : MonoBehaviour
 
         m_audioSource = GetComponent<AudioSource>();
         DebugUtility.HandleErrorIfNullFindObject<AudioSource, FeedbackFlashHUD>(m_audioSource, this);
-
-        FlashWarning();
+        
     }
 
     private void Update()
