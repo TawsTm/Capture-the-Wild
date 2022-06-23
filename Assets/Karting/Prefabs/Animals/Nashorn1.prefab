@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 3202630889016504382}
   - component: {fileID: 2008003202092023707}
   - component: {fileID: 4339547063308667729}
-  m_Layer: 0
+  - component: {fileID: 741380717314914229}
+  - component: {fileID: 3401530880172655353}
+  - component: {fileID: 3079281907728301280}
+  m_Layer: 6
   m_Name: Nashorn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,3 +84,45 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &741380717314914229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2826527185307036292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1439e82798a10ff478a3672615a68227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chooseAnimal: 10
+--- !u!65 &3401530880172655353
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2826527185307036292}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7596564, y: 2.2968836, z: 4.606699}
+  m_Center: {x: 0.003482014, y: 1.1518533, z: 0.29095054}
+--- !u!54 &3079281907728301280
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2826527185307036292}
+  serializedVersion: 2
+  m_Mass: 30
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0

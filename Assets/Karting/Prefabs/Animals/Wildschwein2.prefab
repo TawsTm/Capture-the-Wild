@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 491577143032374251}
   - component: {fileID: 3566205886020611150}
   - component: {fileID: 1628405386190690436}
-  m_Layer: 0
+  - component: {fileID: 7898270390284955649}
+  - component: {fileID: 4248847212004703010}
+  - component: {fileID: 9001621625965866910}
+  m_Layer: 6
   m_Name: Wildschwein2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,3 +84,45 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7898270390284955649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980023722122754385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1439e82798a10ff478a3672615a68227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chooseAnimal: 13
+--- !u!65 &4248847212004703010
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980023722122754385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5841963, y: 1.3624694, z: 2.267643}
+  m_Center: {x: -0.0024950951, y: 0.67917466, z: 0.060078204}
+--- !u!54 &9001621625965866910
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980023722122754385}
+  serializedVersion: 2
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0

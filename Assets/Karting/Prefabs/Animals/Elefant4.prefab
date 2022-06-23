@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2813178523709233998}
   - component: {fileID: -2234215398401148468}
   - component: {fileID: 6901087387998977093}
-  m_Layer: 0
+  - component: {fileID: 5201138969312652987}
+  m_Layer: 6
   m_Name: Elefant4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,3 +113,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.709597, y: 3.9879613, z: 7.6019974}
   m_Center: {x: 0.003721416, y: 1.9301238, z: 0.3542155}
+--- !u!114 &5201138969312652987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326435895753177755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1439e82798a10ff478a3672615a68227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chooseAnimal: 1
