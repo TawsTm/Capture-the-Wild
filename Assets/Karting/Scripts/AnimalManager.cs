@@ -14,7 +14,7 @@ public class AnimalManager : MonoBehaviour
     {
         // This is needed to clear all missing Animals (If collected animals should be stored, the animals should not be cleared)
         animalsCollected = 0;
-        animals.Clear();
+        //animals.Clear();
     }
 
     public static void RemoveAnimal(Animal _animal) {
