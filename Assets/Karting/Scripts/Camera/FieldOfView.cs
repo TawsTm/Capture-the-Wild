@@ -77,7 +77,7 @@ public class FieldOfView : MonoBehaviour
 
                             animal.ScreenTime += timeForAnimalCheck;
                             if(animal.ScreenTime > timeTillTargetFound) {
-                                AnimalManager.RemoveAnimal(animal);
+                                AnimalManager.RemoveAnimal(animal, true);
                                 m_VideoManager.PlayVideo(animal.Name);
                             } else {
                                 //Debug.Log(animal.Name + ". " + animal.ScreenTime);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Animal : MonoBehaviour
 {
-    public enum animalOptions { Giraffe, Elefant, Loewe, Antilope, Krokodil };
+    public enum animalOptions { Zebra, Elefant, Antilope, Buffalo, Gepard, Giraffe, Gnu, Hyaene, Krokodil, Loewe, Nashorn, Nilpferd, Strauss, Wildschwein };
     public animalOptions chooseAnimal;
     public string Name {get; set;}
     public float ScreenTime {get; set;}
@@ -14,5 +14,13 @@ public class Animal : MonoBehaviour
     void Awake() {
         Name = chooseAnimal.ToString();
         AnimalManager.AddAnimal(this);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            AnimalManager.RemoveAnimal(this, false);
+        }
     }
 }
