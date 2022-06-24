@@ -51,6 +51,10 @@ public class VideoManager : MonoBehaviour
         videoImage.enabled = false;
     }
 
+    public void StopVideo() {
+        videoImage.enabled = false;
+    }
+
     IEnumerator StartVideoWithDelay(float delay) {
         while (!m_VideoPlayer.isPrepared) {
             yield return new WaitForSeconds(delay);

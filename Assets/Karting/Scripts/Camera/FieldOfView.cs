@@ -127,6 +127,10 @@ public class FieldOfView : MonoBehaviour
 
     public void setCamStatus(bool _state) {
         statusCam = _state;
+
+        if(_state && m_VideoManager.videoImage.enabled) {
+            m_VideoManager.StopVideo();
+        }
         //Debug.Log("Ich habe geswitched");
     }
 }
