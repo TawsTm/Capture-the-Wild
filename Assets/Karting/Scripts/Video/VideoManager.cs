@@ -52,6 +52,7 @@ public class VideoManager : MonoBehaviour
     }
 
     public void StopVideo() {
+        m_VideoPlayer.Stop();
         videoImage.enabled = false;
     }
 
