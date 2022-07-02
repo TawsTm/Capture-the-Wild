@@ -5,31 +5,38 @@ using UnityEngine;
 public class AnimalManager : MonoBehaviour
 {
     public static List<Animal> animals = new List<Animal>();
+    public static List<string> collectedAnimals = new List<string>();
 
     /*Used to set the winning condition of how many animals need to be collected*/
-    private static int animalsToCollect = 2;
-    private static int animalsCollected = 0;
+    private static int animalsToCollect = 5;
 
     public void OnEnable()
     {
         // This is needed to clear all missing Animals (If collected animals should be stored, the animals should not be cleared)
-        animalsCollected = 0;
+        collectedAnimals.Clear();
         //animals.Clear();
     }
 
     void Start() {
     }
 
-    public static void RemoveAnimal(Animal _animal) {
+    public static void RemoveAnimal(Animal _animal, bool fotographed) {
         // Debug.Log("Removed " + _animal.Name);
-        animals.Remove(_animal);
-        animalsCollected += 1;
-        AnimalBadgeManager.ActivateAnimalBadge(_animal.Name);
-        for(int i = 0; i < animals.Count; i++) {
-            if(animals[i].Name == _animal.Name) {
-                animals.Remove(animals[i]);
-                Debug.Log("Removed another one");
+        if(fotographed) {
+            animals.Remove(_animal);
+            if(!collectedAnimals.Contains(_animal.Name)) {
+                collectedAnimals.Add(_animal.Name);
+                AnimalBadgeManager.ActivateAnimalBadge(_animal.Name);
             }
+            for(int i = 0; i < animals.Count; i++) {
+                if(animals[i].Name == _animal.Name) {
+                    animals.Remove(animals[i]);
+                    Debug.Log("Removed another one");
+                }
+            }
+
+        } else {
+            animals.Remove(_animal);
         }
     }
 
@@ -38,7 +45,7 @@ public class AnimalManager : MonoBehaviour
         if (animals.Count == 0) {
             Debug.Log("No animals left to find");
             return true;
-        } else if (animalsCollected < animalsToCollect) {
+        } else if (collectedAnimals.Count < animalsToCollect) {
             return false;
         }
 

@@ -77,7 +77,7 @@ public class FieldOfView : MonoBehaviour
 
                             animal.ScreenTime += timeForAnimalCheck;
                             if(animal.ScreenTime > timeTillTargetFound) {
-                                AnimalManager.RemoveAnimal(animal);
+                                AnimalManager.RemoveAnimal(animal, true);
                                 m_VideoManager.PlayVideo(animal.Name);
                             } else {
                                 //Debug.Log(animal.Name + ". " + animal.ScreenTime);
@@ -127,6 +127,10 @@ public class FieldOfView : MonoBehaviour
 
     public void setCamStatus(bool _state) {
         statusCam = _state;
+
+        if(_state && m_VideoManager.videoImage.enabled) {
+            m_VideoManager.StopVideo();
+        }
         //Debug.Log("Ich habe geswitched");
     }
 }
